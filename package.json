@@ -1,36 +1,69 @@
 {
-  "name": "randombytes",
-  "version": "2.1.0",
-  "description": "random bytes from browserify stand alone",
-  "main": "index.js",
+  "name": "@geut/randombytes",
+  "version": "0.0.1",
+  "description": "randombytes from node that works in the browser",
+  "type": "module",
+  "main": "./dist/node.cjs",
+  "browser": "./dist/browser.cjs",
+  "exports": {
+    ".": {
+      "require": "./dist/node.cjs",
+      "import": "./src/node.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
-    "test": "standard && node test.js | tspec",
-    "phantom": "zuul --phantom -- test.js",
-    "local": "zuul --local --no-coverage -- test.js"
+    "build": "tsup",
+    "test": "uvu",
+    "posttest": "npm run lint",
+    "lint": "standard",
+    "prepublishOnly": "npm test && npm run build"
+  },
+  "devDependencies": {
+    "standard": "^17.0.0",
+    "tsup": "^6.3.0",
+    "uvu": "^0.5.3"
+  },
+  "tsup": {
+    "entry": [
+      "src/node.js",
+      "src/browser.js"
+    ],
+    "format": [
+      "cjs",
+      "iife"
+    ],
+    "globalName": "randomBytes",
+    "splitting": false,
+    "sourcemap": true,
+    "clean": true
+  },
+  "standard": {
+    "env": [
+      "node",
+      "browser"
+    ]
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:crypto-browserify/randombytes.git"
+    "url": "git+https://github.com/geut/randombytes.git"
   },
   "keywords": [
-    "crypto",
-    "random"
+    "randombytes",
+    "geut",
+    "module"
   ],
-  "author": "",
+  "author": {
+    "name": "GEUT",
+    "email": "contact@geutstudio.com"
+  },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/crypto-browserify/randombytes/issues"
+    "url": "https://github.com/geut/randombytes/issues"
   },
-  "homepage": "https://github.com/crypto-browserify/randombytes",
-  "browser": "browser.js",
-  "devDependencies": {
-    "phantomjs": "^1.9.9",
-    "standard": "^10.0.2",
-    "tap-spec": "^2.1.2",
-    "tape": "^4.6.3",
-    "zuul": "^3.7.2"
-  },
-  "dependencies": {
-    "safe-buffer": "^5.1.0"
-  }
+  "homepage": "https://github.com/geut/randombytes#readme"
 }
