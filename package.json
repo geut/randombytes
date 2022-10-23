@@ -7,8 +7,11 @@
   "browser": "./dist/browser.cjs",
   "exports": {
     ".": {
-      "require": "./dist/node.cjs",
-      "import": "./src/node.js"
+      "node": {
+        "require": "./dist/node.cjs",
+        "import": "./src/node.js"
+      },
+      "default": "./dist/browser.cjs"
     },
     "./package.json": "./package.json"
   },
