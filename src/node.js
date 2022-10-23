@@ -1,1 +1,1 @@
-export { randomBytes } from 'crypto'
+export { randomBytes as default } from 'crypto'
