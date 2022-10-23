@@ -65,5 +65,8 @@
   "bugs": {
     "url": "https://github.com/geut/randombytes/issues"
   },
-  "homepage": "https://github.com/geut/randombytes#readme"
+  "homepage": "https://github.com/geut/randombytes#readme",
+  "publishConfig": {
+    "access": "public"
+  }
 }
