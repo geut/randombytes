@@ -11,7 +11,10 @@
         "require": "./dist/node.cjs",
         "import": "./src/node.js"
       },
-      "default": "./dist/browser.cjs"
+      "default": {
+        "require": "./dist/browser.cjs",
+        "import": "./src/browser.js"
+      }
     },
     "./package.json": "./package.json"
   },
